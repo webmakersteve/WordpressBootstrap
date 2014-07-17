@@ -18,22 +18,6 @@ if ( post_password_required() )
             ?>
         </h2>
 
-        <ol class="media-list">
-            <?php
-            /*
-             <ul class="media-list">
-              <li class="media">
-                <a class="pull-left" href="#">
-                  <img class="media-object" src="..." alt="...">
-                </a>
-                <div class="media-body">
-                  <h4 class="media-heading">Media heading</h4>
-                  ...
-                </div>
-              </li>
-            </ul>
-             */
-            ?>
             <?php
             wp_list_comments( array(
                 'walker'      => new Bootstrap_Comments_Walker(),
@@ -42,7 +26,6 @@ if ( post_password_required() )
                 'avatar_size' => 74,
             ) );
             ?>
-        </ol><!-- .comment-list -->
 
         <?php
         // Are there comments to navigate through?
@@ -70,8 +53,8 @@ if ( post_password_required() )
         'cancel_reply_link' => __( 'Cancel Reply' ),
         'label_submit'      => __( 'Post Comment' ),
 
-        'comment_field' =>  '
-            <div class="form-group">
+        'comment_field' =>
+            '<div class="form-group">
                 <label for="comment" class="col-sm-3 control-label">' . _x( 'Comment', 'noun' ) .
                 '</label>
                 <div class="col-sm-9">
@@ -97,28 +80,44 @@ if ( post_password_required() )
             __( 'Your email address will not be published.' ) . ( $req ? $required_text : '' ) .
             '</p>',
 
-        'comment_notes_after' => '<button type="submit" class="btn btn-default">'.__('Post Comment').'</button>',
+        'comment_notes_after' =>
+            '<div class="form-group form-group-submit">
+                <div class="col-sm-offset-2 col-sm-10" style="text-align:right;padding-top:15px;">
+                    <button type="submit" class="btn btn-default">'.__('Post Comment').'</button>
+                </div>
+             </div>',
 
         'fields' => apply_filters( 'comment_form_default_fields', array(
 
                 'author' =>
-                    '<p class="comment-form-author">' .
-                    '<label for="author">' . __( 'Name', 'domainreference' ) . '</label> ' .
-                    ( $req ? '<span class="required">*</span>' : '' ) .
-                    '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-                    '" size="30"' . $aria_req . ' /></p>',
+                    '<div class="form-group">
+                       <label for="author" class="col-sm-3 control-label">' . __( 'Name', 'domainreference' ) .
+                        '</label>
+                        <div class="col-sm-9">
+                            <input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+                    '" ' . $aria_req . ' />
+                        </div>
+                     </div>',
 
                 'email' =>
-                    '<p class="comment-form-email"><label for="email">' . __( 'Email', 'domainreference' ) . '</label> ' .
-                    ( $req ? '<span class="required">*</span>' : '' ) .
-                    '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-                    '" size="30"' . $aria_req . ' /></p>',
+                    '<div class="form-group">
+                           <label for="email" class="col-sm-3 control-label">' . __( 'Email', 'domainreference' ) .
+                    '</label>
+                    <div class="col-sm-9">
+                        <input id="email" name="email" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) .
+                    '" ' . $aria_req . ' />
+                        </div>
+                     </div>',
 
                 'url' =>
-                    '<p class="comment-form-url"><label for="url">' .
-                    __( 'Website', 'domainreference' ) . '</label>' .
-                    '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
-                    '" size="30" /></p>'
+                    '<div class="form-group">
+                           <label for="url" class="col-sm-3 control-label">' . __( 'Website', 'domainreference' ) .
+                    '</label>
+                    <div class="col-sm-9">
+                        <input id="url" name="url" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
+                    '" ' . $aria_req . ' />
+                        </div>
+                     </div>'
             )
         ),
     );

@@ -9,69 +9,86 @@ class Bootstrap_Comments_Walker extends Walker_Comment {
      * You'll have to use this if you plan to get to the top of the comments list, as
      * start_lvl() only goes as high as 1 deep nested comments */
     function __construct() {
-
+        ?><section class="comments-section">
+            <ol class="media-list comments-list"><?php
     }
 
-    /** START_LVL
-     * Starts the list before the CHILD elements are added. */
-function start_lvl( &$output, $depth = 0, $args = array() ) {
-    $GLOBALS['comment_depth'] = $depth + 1; ?>
-
-<?php }
+    function start_lvl( &$output, $depth = 0, $args = array() ) {
+        $this->current_comment_depth = $depth + 1;
+        $this->setGlobals( $depth + 1 );
+        echo '<!-- start level --> ';
+        ?><ol class="media-list"><?php
+    }
 
     /** END_LVL
      * Ends the children list of after the elements are added. */
-function end_lvl( &$output, $depth = 0, $args = array() ) {
-    $GLOBALS['comment_depth'] = $depth + 1; ?>
 
-<?php }
+    function end_lvl( &$output, $depth = 0, $args = array() ) {
+        $this->current_comment_depth = $depth + 1;
+        $this->setGlobals( $depth + 1 );
+        ?></ol><?php
+        echo '<!-- end level --> ';
+    }
+
+    private $current_comment_depth;
+    private $current_comment;
 
     /** START_EL */
-function start_el( &$output, $comment, $depth, $args, $id = 0 ) {
-    $depth++;
-    $GLOBALS['comment_depth'] = $depth;
-    $GLOBALS['comment'] = $comment;
-    $parent_class = ( empty( $args['has_children'] ) ? '' : 'parent' ); ?>
 
-    <li <?php comment_class( array('media', $parent_class) ); ?> id="comment-<?php comment_ID() ?>">
-        <a class="pull-left comment-author vcard" href="#">
-            <!--img class="media-object" src="..." alt="..."-->
-            <?php echo ( $args['avatar_size'] != 0 ? get_avatar( $comment, $args['avatar_size'] ) :'' ); ?>
-        </a>
-        <div class="media-body">
-            <h4 class="media-heading author-name"><?php echo get_comment_author_link(); ?></h4>
-            <div id="comment-content-<?php comment_ID(); ?>" class="comment-content">
-                <?php if( !$comment->comment_approved ) : ?>
-                    <em class="comment-awaiting-moderation">Your comment is awaiting moderation.</em>
+    private function setGlobals( $depth=null, $currentComment=null ) {
+        global $comment_depth, $comment;
+        if ($depth) $comment_depth = $depth;
+        if ($currentComment) $comment = $currentComment;
+    }
 
-                <?php else: comment_text(); ?>
-                <?php endif; ?>
-            </div><!-- /.comment-content -->
-            <div class="comment-meta comment-meta-data">
-                <a href="<?php echo htmlspecialchars( get_comment_link( get_comment_ID() ) ) ?>"><?php comment_date(); ?> at <?php comment_time(); ?></a> <?php edit_comment_link( '(Edit)' ); ?>
-            </div><!-- /.comment-meta -->
-            <div class="reply">
-                <?php $reply_args = array(
-                    'add_below' => $add_below,
-                    'depth' => $depth,
-                    'max_depth' => $args['max_depth'] );
+    function start_el( &$output, $comment, $depth, $args, $id = 0 ) {
 
-                comment_reply_link( array_merge( $args, $reply_args ) );  ?>
-            </div><!-- /.reply -->
-        </div>
+        $this->setGlobals( $depth, $comment );
 
-<?php }
+        $depth++;
+        $this->current_comment_depth = $depth;
+        $this->current_comment = $comment;
 
-function end_el(&$output, $comment, $depth = 0, $args = array() ) { ?>
+        $parent_class = ( empty( $args['has_children'] ) ? '' : 'parent' ); ?>
 
-    </li><!-- /#comment-' . get_comment_ID() . ' -->
+        <li <?php comment_class( array('media', $parent_class) ); ?> id="comment-<?php comment_ID() ?>">
+            <a class="pull-left comment-author vcard" href="#">
+                <!--img class="media-object" src="..." alt="..."-->
+                <?php echo ( $args['avatar_size'] != 0 ? get_avatar( $comment, $args['avatar_size'] ) :'' ); ?>
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading author-name"><?php echo get_comment_author_link(); ?></h4>
+                <div id="comment-content-<?php comment_ID(); ?>" class="comment-content">
+                    <?php if( !$comment->comment_approved ) : ?>
+                        <em class="comment-awaiting-moderation">Your comment is awaiting moderation.</em>
 
-<?php }
+                    <?php else: comment_text(); ?>
+                    <?php endif; ?>
+                </div><!-- /.comment-content -->
+                <div class="comment-meta comment-meta-data">
+                    <a href="<?php echo htmlspecialchars( get_comment_link( get_comment_ID() ) ) ?>"><?php comment_date(); ?> at <?php comment_time(); ?></a> <?php edit_comment_link( '(Edit)' ); ?>
+                </div><!-- /.comment-meta -->
+                <div class="reply">
+                    <?php $reply_args = array(
+                        'add_below' => $args['add_below'],
+                        'depth' => $depth,
+                        'max_depth' => $args['max_depth'] );
 
-    /** DESTRUCTOR
-     * I'm just using this since we needed to use the constructor to reach the top
-     * of the comments list, just seems to balance out nicely:) */
+                    comment_reply_link( array_merge( $args, $reply_args ) );  ?>
+                </div><!-- /.reply -->
+
+
+    <?php }
+
+    function end_el(&$output, $comment, $depth = 0, $args = array() ) { ?>
+
+            </div> <!-- .media-body -->
+        </li>
+        <?php echo '<!-- /#comment-' . get_comment_ID() . ' -->'; ?>
+
+    <?php }
+
     function __destruct() {
-
+        ?></ol></section><?php
     }
 }
