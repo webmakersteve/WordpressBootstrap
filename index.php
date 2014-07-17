@@ -2,14 +2,29 @@
 
 <div class="jumbotron">
   <div class="container">
-    <h1>Hello, world!</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-inverse btn-lg" role="button">Learn more &raquo;</a></p>
+    <h1><?php echo bloginfo('title'); ?></h1>
+    <p><?php echo bloginfo('description'); ?></p>
+    <!--p><a class="btn btn-inverse btn-lg" role="button">Learn more &raquo;</a></p-->
   </div>
 </div>
 
 <div class="container">
   <!-- Example row of columns -->
+    <div class="row">
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <div class="col-md-6 col-md-offset-3">
+            <h3><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+            <?php the_content(); ?>
+            <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
+        </div>
+        <?php endwhile; else: ?>
+        <div class="col-md-6 col-md-offset-3">
+            No Posts
+        </div>
+        <?php endif; ?>
+
+    </div>
+
   <div class="row">
     <div class="col-md-4">
       <h2>Heading</h2>
