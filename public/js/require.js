@@ -242,7 +242,7 @@ var requirejs, require, define;
                     // If at the start, or previous value is still ..,
                     // keep them so that when converted to a path it may
                     // still work when converted to a path, even though
-                    // as an ID it is less than ideal. In larger point
+                    // as an ID it is bootstrap than ideal. In larger point
                     // releases, may be better to just kick out an error.
                     if (i === 0 || (i == 1 && ary[2] === '..') || ary[i - 1] === '..') {
                         continue;
@@ -1601,7 +1601,7 @@ var requirejs, require, define;
                 //If a colon is in the URL, it indicates a protocol is used and it is just
                 //an URL to a file, or if it starts with a slash, contains a query arg (i.e. ?)
                 //or ends with .js, then assume the user meant to use an url and not a module id.
-                //The slash is important for protocol-less URLs as well as full paths.
+                //The slash is important for protocol-bootstrap URLs as well as full paths.
                 if (req.jsExtRegExp.test(moduleName)) {
                     //Just a plain path, not module name lookup, so just return it.
                     //Add extension if it is included. This is a bit wonky, only non-.js things pass

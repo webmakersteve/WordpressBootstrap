@@ -1,0 +1,437 @@
+/* Mobile
+=============================== */
+
+@appBarColor: #fff;
+@mobileNavHeight: 60px;
+
+header#header #header-wrapper {
+  position:relative;
+}
+
+.app-bar {
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 3;
+  .drop-shadow();
+  width: 100%;
+  background: @appBarColor;
+
+  .container {
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    height: 60px;
+    position: relative;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    margin: 0 auto;
+  }
+
+  &.open,
+  &.open ~ main {
+    -webkit-transform: translate(250px, 0);
+    transform: translate(250px, 0);
+  }
+
+  .navbar-brand {
+    -webkit-flex: 1;
+    flex: 1;
+    font-size: 2em;
+    line-height: @mobileNavHeight;
+    margin: 0 0 0 0;
+    padding: 0 !important;
+    color: #fefefe;
+    float: none;
+    text-align: center;
+    max-width: none;
+    font-weight: 300;
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: normal;
+    }
+  }
+
+  .actions {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    z-index: 2;
+  }
+
+  .button {
+    width: @mobileNavHeight;
+    height: @mobileNavHeight;
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-right-width: 1px;
+    border-color: #ececec;
+    border-right-style: solid;
+    transition: background-color 0.2s ease-out;
+    -webkit-tap-highlight-color: transparent;
+
+    img {
+      height:24px;
+      width: 24px;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.2);
+      outline: 0;
+    }
+    &:active {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+  }
+
+
+  /** Branding **/
+  h1.navbar-brand {
+    position: absolute;top:0;left: @mobileNavHeight + 10;
+  }
+
+}
+
+.promote-layer {
+  /*
+  This may promote the layer to a composited
+  layer.
+
+  Replace with will-change when available
+
+  #perfmatters
+  */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+nav {
+  float: none;
+}
+
+.navdrawer-container {
+  font-size:15px;
+  background:#f7f7f7;
+  color:#7e7e7e;
+  box-shadow:inset 0 0 5px 5px #ebebeb;
+  -webkit-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -moz-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -ms-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -o-box-shadow: inset 0 0 5px 5px #ebebeb;
+
+  z-index: 4;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  height: 100%;
+  -webkit-transform: translate(-250px, 0);
+  transform: translate(-250px, 0);
+  overflow-y: scroll;
+
+  &.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  h4,
+  .nav > ul > li > a {
+    height: 78px;
+    padding: 0 39px !important;
+    line-height: 78px;
+  }
+
+  .nav ul li {
+    border-bottom-style: solid;
+    border-width: 1px;
+    float: none;
+    border-color: #e7e7e7;
+    padding: 0;
+    line-height: 1;
+
+    &.dropdown {
+      border-color: #272727;
+      a {
+        color: white;
+        background-color: #313131;
+        position:relative;
+        &:after {
+          width:17px;
+          height:17px;
+          content: " ";
+          background:url(http://54.197.130.50/sites/all/themes/ebayinc/images/dd-arrows.png) 0 -17px;
+          background-size:auto 34px;
+          display:block;
+          position:absolute;
+          border:0;
+          margin-top:-9px;
+          top:50%;
+          right:20px;
+        }
+
+      }
+      &.hover, &.dropdown-open, .has-drop-down-open {
+        & > a:after {
+          background-position: 0 0;
+        }
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: white;
+        transition: background-color 0.2s ease-out;
+        &:focus {
+          outline: 0;
+        }
+      }
+      ul {
+        li {
+          border-bottom-width: 0px;
+          & > a {
+            height: 40px;
+            line-height: 40px;
+            color:#0063d0;
+            font-size:15px;
+          }
+
+          &:before {
+            content: none;
+          }
+        } /* end dropped down list element */
+      } /* end dropped down submenu */
+    } /* end list element with dropdown */
+  }/* end list elements of nav */
+
+} /* end nav container */
+
+.app-bar, .navdrawer-container, main {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+
+/** Larger Screens - desktops and tablets **/
+@media all and (min-device-width: 1200px) {
+
+  .navdrawer-container,.app-bar {
+    position:absolute;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  #header .logo {
+    line-height: 82px;
+  }
+  .app-bar {
+    position: relative;
+
+  }
+
+  .drop {
+    padding: 0 !important;
+  }
+
+  .nav-container {
+    width: 1080px;
+    margin: 0 auto;
+  }
+
+  .app-bar-container {
+    display: block;
+    height: 82px;
+    max-width: 1080px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background-color: white;
+  }
+
+  .app-bar .logo {
+    float: left;
+    margin: 0;
+    padding: 0;
+    line-height: 70px;
+    font-size: 46px;
+    width: 177px;
+  }
+
+  .app-bar-actions {
+    float: right;
+  }
+
+  .app-bar:after {
+    content: ' ';
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+
+  button.menu {
+    display: none;
+  }
+
+  h1.logo {
+    position: static;
+    top: auto;
+    left: auto;
+  }
+
+  .navdrawer-container {
+
+    width: 100%;
+    height: auto;
+    margin-top: 130px;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    transition: none;
+    overflow-y: auto;
+
+
+  }
+
+  a.search-icon {display: block !important;}
+
+  .navdrawer-container #search-wrapper {
+    display: none;
+  }
+
+  .navdrawer-container ul {
+    display: -webkit-flex;
+    display: flex;
+    max-width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+
+  .navdrawer-container ul li {
+    border: none;
+  }
+
+  body {
+    /* overflow-y: scroll; */
+  }
+
+  .navdrawer-container, {
+    margin-top: 0;
+    background: transparent;
+    height: 1px;
+    z-index: 1000;
+    overflow: visible;
+  }
+
+  .navdrawer-container #nav> ul {
+    padding-left: 239px;
+  }
+
+  .navdrawer-container #nav > ul li.has-drop-down > a {
+    background: transparent;
+    color: #7e7e7e;
+    border-bottom-width: 0;
+  }
+  .navdrawer-container #nav> ul > li.has-drop-down > a:after {
+    content: none;
+  }
+  .navdrawer-container #nav> ul > li {
+    border-bottom-width: 0;
+    border-top-width: 0 !important;
+    width: auto;
+    height: 82px;
+    float: left;
+  }
+  .navdrawer-container #nav> ul > li:hover,
+  .navdrawer-container #nav> ul > li.has-drop-down-open,
+  .navdrawer-container #nav > ul > li.active {
+    background-color: #f0f0f0;
+  }
+
+  .navdrawer-container #nav > ul > li > a {
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: white;
+    text-align: center;
+    line-height: 78px;
+    height: 78px;
+  }
+  .navdrawer-container #nav > ul > li:hover > a,
+  .navdrawer-container #nav > ul > li.has-drop-down-open > a,
+  .navdrawer-container #nav > ul > li.active > a {
+    border-top-color: #0064d2;
+  }
+  .navdrawer-container #nav > ul li.has-drop-down {
+    .drop {
+      position: absolute; top: 82px; left: 0; right: 0; width: 100%;
+    }
+  }
+  .navdrawer-container #nav > ul li.has-drop-down ul li {
+    & > a, & > a:link,& > a:visited{
+      &:hover {
+        color: white;
+      }
+      height: auto;
+      line-height: 1;
+      font-size: 14px;
+      padding:9px 14px 8px;
+    }
+  }
+
+
+}
+
+@media all and (min-device-width: 1200px) and (max-width: 800px) {
+  .app-bar .logo {
+    float: none;
+    width: 100%;
+    line-height: normal;
+    text-align: center;
+    padding-top: 36px;
+  }
+
+  .app-bar-container {
+    height: auto;
+  }
+
+  .app-bar-actions {
+    width: 100%;
+  }
+
+  .navdrawer-container {
+    padding: 0 16px;
+    overflow-y: auto;
+  }
+
+  .navdrawer-container li {
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.navdrawer-container ul li.has-drop-down ul {
+  overflow: hidden;
+  display: none;
+  height: 0px;
+  background-color: #f0f0f0;
+
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.navdrawer-container ul li.has-drop-down.hover ul {
+  display: block;
+  height: auto;
+}

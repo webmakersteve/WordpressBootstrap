@@ -29,22 +29,24 @@ register_nav_menus( array(
 	'primary'	=> "Top Menu"
 ));
 
-function bootstrapRegisterHead() {
+function bootstrap_register_defaults() {
 	
 	//first add bootstrap
-	wp_register_style('bootstrap-css', T.'public/css/bootstrap.min.css', false, THEME_VERSION, 'all');
-	wp_register_style('bootstrap-theme', T.'public/css/bootstrap-theme.min.css', false, THEME_VERSION, 'all');
 	wp_register_style('main-css', get_stylesheet_uri(), false, THEME_VERSION, 'all');
 	
-	$fixed_header = "body {padding-top: 50px;padding-bottom: 20px;}";
+	$fixed_header = "main {min-height: 100%;}";
 	wp_add_inline_style( 'fixed-header', $fixed_header ); //fixed headers only
 	
-	wp_register_script('modernizr', T.'public/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', false, THEME_VERSION, false);
-	
+	wp_register_script('modernizr', T.'public/js/modernizr.min.js', false, THEME_VERSION, false);
+
+
+    // Now we can localize the script with our data.
+    wp_localize_script( 'modernizr', 'bootstrap', array( '__dirname' => get_template_directory_uri() ) );
+
 }
 
-function bootstrapEnqueueHead() {
-	bootstrapRegisterHead();
+function bootstrap_enqueue_defaults() {
+	bootstrap_register_defaults();
 	
 	wp_enqueue_style( 'bootstrap-css' );
 	wp_enqueue_style( 'bootstrap-theme' );
@@ -53,27 +55,9 @@ function bootstrapEnqueueHead() {
 	wp_enqueue_script( 'modernizr' );
 }
 
-add_action( 'wp_enqueue_scripts', 'bootstrapEnqueueHead' );
+add_action( 'wp_enqueue_scripts', 'bootstrap_enqueue_defaults' );
 
-function bootstrapRegisterFoot() {
-	//wp_register_script('jQuery', "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js", false, THEME_VERSION, true); pretty sure wordpress requires this
-	
-	//wp_localize_script( 'jQuery', 'hotloaded', "window.jQuery || document.write('<script src=\"js/vendor/jquery-1.10.1.min.js\"><\/script>')" );
-	
-	wp_register_script('bootstrap', T.'public/js/vendor/bootstrap.min.js', false, THEME_VERSION, true);
-	wp_register_script('main', T.'public/js/main.js', false, THEME_VERSION, true);
-	
-}
 
-function bootstrapEnqueueFoot() {
-	bootstrapRegisterFoot();
-	
-	wp_enqueue_script( 'jQuery' );
-	wp_enqueue_script('bootstrap');
-	wp_enqueue_script('main');	
-}
-
-add_action( 'wp_enqueue_scripts', 'bootstrapEnqueueFoot' );
 
 if (is_admin_bar_showing()) add_action( 'wp_head', function( ) {
 	?><style type="text/css">
