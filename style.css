@@ -6522,19 +6522,25 @@ main {
   display: block;
   height: auto;
 }
+body.admin-bar .app-bar,
+body.admin-bar .navdrawer-container {
+  top: 32px;
+}
 @media (min-width: 992px) {
   .navdrawer-container,
   .app-bar {
     position: absolute;
   }
   main {
-    padding-top: 0px;
+    padding-top: 50px;
   }
   .app-bar {
-    position: relative;
+    position: absolute;
     height: 50px;
   }
+  .app-bar h1.navbar-brand,
   .app-bar .navbar-brand {
+    text-align: left;
     margin: 0;
     padding: 0;
     height: 50px;
@@ -6632,7 +6638,7 @@ main {
     padding: 9px 14px 8px;
   }
 }
-a {
+.navbar-nav a {
   color: #563d7c;
 }
 .jumbotron {
