@@ -3,20 +3,7 @@
 define('T', dirname(get_stylesheet_uri()) . '/' );
 define('THEME_VERSION', 1);
 
-function bootstrap_autoload($class_name) {
-	if ( class_exists( $class_name, false )) return;
-    $filename = str_replace('_', DIRECTORY_SEPARATOR, strtolower($class_name)).'.php';
-
-    $file = dirname(__FILE__).DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'bootstrap'.DIRECTORY_SEPARATOR.$filename;
-    if ( ! file_exists($file))
-    {
-        return FALSE;
-    }
-    include $file;	
-}
-
-if (function_exists('__autoload')) spl_autoload_register( '__autoload' );
-spl_autoload_register( 'bootstrap_autoload' );
+require('src/menu/walker.php');
 
 add_theme_support( 'menus' );
 add_theme_support( 'html5' );
@@ -48,15 +35,11 @@ function bootstrap_register_defaults() {
 function bootstrap_enqueue_defaults() {
 	bootstrap_register_defaults();
 	
-	wp_enqueue_style( 'bootstrap-css' );
-	wp_enqueue_style( 'bootstrap-theme' );
 	wp_enqueue_style( 'main-css');
-	
 	wp_enqueue_script( 'modernizr' );
 }
 
 add_action( 'wp_enqueue_scripts', 'bootstrap_enqueue_defaults' );
-
 
 
 if (is_admin_bar_showing()) add_action( 'wp_head', function( ) {

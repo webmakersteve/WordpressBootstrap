@@ -72,21 +72,18 @@ main {
 
     li {
       border: none;
+      &:hover,
+      &.active {
+        background-color: #f0f0f0;
+      }
     }
+
     & > li {
 
       border-bottom-width: 0;
       border-top-width: 0 !important;
       width: auto;
       height: @navbarHeight;
-
-      &:hover,
-      &.active {
-        background-color: #f0f0f0;
-        & > a {
-          border-top-color: #0064d2;
-        }
-      }
 
       a, a:link, a:visited {
         color: @primaryColor;
@@ -127,9 +124,6 @@ main {
 }
 .navdrawer-container .nav >  li.dropdown ul li {
   & > a, & > a:link,& > a:visited{
-    &:hover {
-      color: white;
-    }
     height: auto;
     line-height: 1;
     font-size: 14px;

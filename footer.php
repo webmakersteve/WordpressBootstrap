@@ -1,7 +1,7 @@
 </main>
 
 <footer class="container">
-        <p>&copy; Company 2013</p>
+        <p>&copy; <?php echo date('Y'); ?> WordPress Bootstrap</p>
       </footer>
       <?php wp_footer(); ?>
 	  <script>
