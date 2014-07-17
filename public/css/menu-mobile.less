@@ -1,0 +1,278 @@
+/* Mobile
+=============================== */
+
+header#header #header-wrapper {
+  position:relative;
+}
+
+.app-bar {
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 3;
+  .drop-shadow();
+  width: 100%;
+  background: @appBarColor;
+
+  .container {
+    display: -webkit-flex;
+    display: flex;
+    height: 60px;
+    position: relative;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    margin: 0 auto;
+  }
+
+  &.open,
+  &.open ~ main {
+    -webkit-transform: translate(250px, 0);
+    transform: translate(250px, 0);
+  }
+
+  .navbar-brand {
+    -webkit-flex: 1;
+    flex: 1;
+    font-size: 1.6em;
+    line-height: @mobileNavHeight;
+    margin: 0 0 0 0;
+    padding: 0 !important;
+    color: @primaryColor;
+    float: none;
+    text-align: center;
+    max-width: none;
+    font-weight: 300;
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: normal;
+    }
+  }
+
+  .actions {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    z-index: 2;
+  }
+
+  .button {
+    width: @mobileNavHeight;
+    height: @mobileNavHeight;
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-right-width: 1px;
+    border-color: #ececec;
+    border-right-style: solid;
+    transition: background-color 0.2s ease-out;
+    -webkit-tap-highlight-color: transparent;
+
+    img {
+      height:24px;
+      width: 24px;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.2);
+      outline: 0;
+    }
+    &:active {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+  }
+
+
+  /** Branding **/
+  h1.navbar-brand {
+    position: absolute;top:0;left: @mobileNavHeight;
+  }
+
+}
+
+.app-bar, .navdrawer-container {
+  .container {
+    padding-left: 0; padding-right: 0;
+  }
+}
+
+main {
+  padding-top: @mobileNavHeight;
+}
+
+.promote-layer {
+  /*
+  This may promote the layer to a composited
+  layer.
+
+  Replace with will-change when available
+
+  #perfmatters
+  */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+nav {
+  float: none;
+}
+
+.navdrawer-container {
+  font-size:15px;
+  background:#f0f0f0;
+  color:#7e7e7e;
+  box-shadow:inset 0 0 5px 5px #ebebeb;
+  -webkit-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -moz-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -ms-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -o-box-shadow: inset 0 0 5px 5px #ebebeb;
+
+  z-index: 4;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  height: 100%;
+  -webkit-transform: translate(-250px, 0);
+  transform: translate(-250px, 0);
+  overflow-y: scroll;
+
+  &.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  h4,
+  .navnav-nav ul > li > a {
+    height: @mobileNavHeight;
+    padding: 0 39px !important;
+    line-height: 78px;
+  }
+
+  .navbar-nav {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .navbar-nav li {
+    border-bottom-style: solid;
+    border-width: 1px;
+    float: none;
+    border-color: #e7e7e7;
+    padding: 0;
+    line-height: 1;
+
+    a {
+      color: @primaryColor;
+    }
+
+    &.dropdown {
+      a {
+        color: white;
+        position:relative;
+        &:after {
+          width:17px;
+          height:17px;
+          content: " ";
+          background-size:auto 34px;
+          display:block;
+          position:absolute;
+          border:0;
+          margin-top:-9px;
+          top:50%;
+          right:20px;
+        }
+
+      }
+      &.hover, &.dropdown-open, .has-drop-down-open {
+        & > a:after {
+          background-position: 0 0;
+        }
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: @primaryColor;
+        transition: background-color 0.2s ease-out;
+        &:focus {
+          outline: 0;
+        }
+      }
+      ul {
+        li {
+          border-bottom-width: 0px;
+          & > a {
+            height: 40px;
+            line-height: 40px;
+            color:#0063d0;
+            font-size:15px;
+          }
+
+          &:before {
+            content: none;
+          }
+        } /* end dropped down list element */
+      } /* end dropped down submenu */
+    } /* end list element with dropdown */
+  }/* end list elements of nav */
+
+} /* end nav container */
+
+.app-bar, .navdrawer-container, main {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+
+@media all and (min-device-width: @screen-md-min) and (max-width: @screen-xs-max) {
+  .app-bar .logo {
+    float: none;
+    width: 100%;
+    line-height: normal;
+    text-align: center;
+    padding-top: 36px;
+  }
+
+  .app-bar-container {
+    height: auto;
+  }
+
+  .app-bar-actions {
+    width: 100%;
+  }
+
+  .navdrawer-container {
+    padding: 0 16px;
+    overflow-y: auto;
+  }
+
+  .navdrawer-container li {
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.navdrawer-container ul li.has-drop-down ul {
+  overflow: hidden;
+  display: none;
+  height: 0px;
+  background-color: #f0f0f0;
+
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.navdrawer-container ul li.has-drop-down.hover ul {
+  display: block;
+  height: auto;
+}

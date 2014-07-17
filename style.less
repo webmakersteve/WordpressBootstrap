@@ -6,16 +6,58 @@ Version: 1.0
 
 */
 
+/*
+ * This is mobile first so media queries are done custom
+ */
+
 @import 'public/css/bootstrap/bootstrap.less';
 @import 'public/css/elements.less';
 
-@import 'public/css/menu.less';
+@appBarColor: #fff;
+@mobileNavHeight: 60px;
 
-.icon-bar {
-  border: 1px solid white;
+@primaryColor: #563d7c;
+@navColor: #fff;
+@brandSize: 18px;
+@navbarHeight: 50px;
+@inverseColor: white;
+
+@import 'public/css/menu-mobile.less';
+
+@media (min-width: @screen-md-min) {
+  @import 'public/css/menu.less';
 }
 
+.jumbotron {
+  background-color: @primaryColor;
+  color: @inverseColor;
+}
 
+.btn {
+  &.btn-inverse {
+    color: @inverseColor;
+    background-color: @primaryColor;
+    border-color: @inverseColor;
+    &:hover {
+      color: @primaryColor;
+      background-color: @inverseColor;
+    }
+  }
+
+  &.btn-default {
+    color: @primaryColor;
+    background-color: @inverseColor;
+    border-color: @primaryColor;
+    &:hover {
+      color: @inverseColor;
+      background-color: @primaryColor;
+    }
+  }
+}
+
+.icon-bar {
+  border: 1px solid @primaryColor;
+}
 header.app-bar {
-  background-color: red;
+  background-color: @navColor;
 }

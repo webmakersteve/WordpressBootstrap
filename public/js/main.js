@@ -3,12 +3,12 @@
 require.config({
     baseUrl: bootstrap.__dirname + '/public/js/',
     paths: {
-        jquery: 'jquery.min'
+        jquery: 'jquery.min',
+        bootstrap: 'bootstrap.min'
     }
 })
 
-require(['jquery'], function (jQuery) {
-
+require(['jquery', 'bootstrap'], function (jQuery) {
     (function($) {
         var navdrawerContainer = $('.navdrawer-container');
         var appbarElement = $('.app-bar');

@@ -1,0 +1,452 @@
+/* Mobile
+=============================== */
+.app-bar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 3;
+  width: 100%;
+  background: #ffffff;
+}
+.app-bar-container {
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  margin: 0 auto;
+}
+.app-bar.open,
+.app-bar.open ~ main {
+  -webkit-transform: translate(250px, 0);
+  transform: translate(250px, 0);
+}
+.app-bar .logo {
+  -webkit-flex: 1;
+  flex: 1;
+  font-size: 2em;
+  line-height: 82px;
+  margin: 0 16px 0 0;
+  padding: 0 !important;
+  color: #fefefe;
+  float: none;
+  text-align: center;
+  max-width: none;
+  font-weight: 300;
+}
+.app-bar .logo a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: normal;
+}
+.app-bar-actions {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  z-index: 2;
+}
+.app-bar button {
+  width: 60px;
+  height: 60px;
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  border-right-width: 1px;
+  border-color: #ececec;
+  border-right-style: solid;
+  transition: background-color 0.2s ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+.app-bar button img {
+  width: 60px;
+  height: 60px;
+}
+.app-bar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.app-bar button:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: 0;
+}
+.app-bar button:active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+button.menu img {
+  height: 24px;
+  width: 24px;
+}
+h1.logo {
+  position: absolute;
+  top: 0;
+  left: 80px;
+}
+#nav {
+  float: none;
+}
+header#header #header-wrapper {
+  position: relative;
+}
+.promote-layer {
+  /*
+  This may promote the layer to a composited
+  layer.
+
+  Replace with will-change when available
+
+  #perfmatters
+  */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.navdrawer-container {
+  font-size: 15px;
+  background: #f7f7f7;
+  color: #7e7e7e;
+  box-shadow: inset 0 0 5px 5px #ebebeb;
+  -webkit-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -moz-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -ms-box-shadow: inset 0 0 5px 5px #ebebeb;
+  -o-box-shadow: inset 0 0 5px 5px #ebebeb;
+  z-index: 4;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  height: 100%;
+  -webkit-transform: translate(-250px, 0);
+  transform: translate(-250px, 0);
+  overflow-y: scroll;
+}
+.navdrawer-container.open {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.app-bar,
+.navdrawer-container,
+main {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+.navdrawer-container h4,
+.navdrawer-container #nav > ul > li > a,
+.navdrawer-container .social-nav ul li a {
+  height: 78px;
+  padding: 0 39px !important;
+  line-height: 78px;
+}
+a.search-icon {
+  display: none !important;
+}
+.navdrawer-container #search-wrapper {
+  background: #0064d2;
+  padding: 15px 11px 12px;
+  box-shadow: inset -7px 0 8px -2px #0053ad;
+  position: relative;
+}
+.navdrawer-container #search-wrapper:before {
+  content: " ";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background-image: url(../images/retina-search.png);
+  background-repeat: no-repeat;
+  background-size: 14px auto;
+  z-index: 2;
+  top: 21px;
+  left: 24px;
+}
+.navdrawer-container #search-wrapper form input[type="text"] {
+  background-color: #fff;
+  width: 100%;
+  font-size: 15px;
+  line-height: 18px;
+  padding: 7px 40px;
+  height: 28px;
+  background: #fff;
+  box-sizing: border-box;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  border: none;
+  color: #7e7e7e;
+  display: block;
+  clear: both;
+  box-shadow: none;
+}
+.navdrawer-container #nav ul,
+.navdrawer-container .social-nav u {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.navdrawer-container #nav ul li a,
+.navdrawer-container .social-nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.2s ease-out;
+}
+.navdrawer-container #nav ul li,
+.navdrawer-container .social-nav ul li {
+  border-bottom-style: solid;
+  border-width: 1px;
+  float: none;
+  border-color: #e7e7e7;
+  padding: 0;
+  line-height: 1;
+}
+.navdrawer-container #nav ul li.has-drop-down {
+  border-color: #272727;
+}
+.navdrawer-container #nav ul li > a,
+.navdrawer-container .social-nav ul li a {
+  color: #7e7e7e;
+}
+.navdrawer-container #nav ul li.has-drop-down > a {
+  color: white;
+  background-color: #313131;
+  position: relative;
+}
+.navdrawer-container #nav ul li.has-drop-down > a:after {
+  width: 17px;
+  height: 17px;
+  content: " ";
+  background: url(http://54.197.130.50/sites/all/themes/ebayinc/images/dd-arrows.png) 0 -17px;
+  background-size: auto 34px;
+  display: block;
+  position: absolute;
+  border: 0;
+  margin-top: -9px;
+  top: 50%;
+  right: 20px;
+}
+.navdrawer-container #nav ul li.has-drop-down.hover > a:after,
+.navdrawer-container #nav ul li.has-drop-down.dropdown-open > a:after,
+.navdrawer-container #nav ul li.has-drop-down .has-drop-down-open > a:after {
+  background-position: 0 0;
+}
+.navdrawer-container #nav ul li.has-drop-down ul {
+  padding: 0;
+  margin: 0;
+}
+.navdrawer-container #nav ul li.has-drop-down .drop {
+  padding: 20px 0;
+  position: static;
+}
+.navdrawer-container #nav ul li.has-drop-down ul li {
+  border-bottom-width: 0px;
+}
+.navdrawer-container #nav ul li.has-drop-down ul li > a {
+  height: 40px;
+  line-height: 40px;
+  color: #0063d0;
+  font-size: 15px;
+}
+.navdrawer-container #nav ul li:before,
+.navdrawer-container .social-nav ul li:before {
+  content: none;
+}
+.navdrawer-container #nav ul li a:focus {
+  outline: 0;
+}
+main {
+  margin: 0 auto;
+  /* Height of the header */
+  /*padding: 60px 0 16px;*/
+  min-height: 100%;
+}
+.app-bar-wrapper {
+  box-shadow: 0px 9px 5px -5px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  background: #fff;
+}
+/** Larger Screens - desktops and tablets **/
+@media all and (min-device-width: 1200px) {
+  .navdrawer-container,
+  .app-bar {
+    position: absolute;
+  }
+  main {
+    padding: 0;
+  }
+  #header .logo {
+    line-height: 82px;
+  }
+  .app-bar {
+    position: relative;
+  }
+  .drop {
+    padding: 0 !important;
+  }
+  .nav-container {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  .app-bar-container {
+    display: block;
+    height: 82px;
+    max-width: 1080px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background-color: white;
+  }
+  .app-bar .logo {
+    float: left;
+    margin: 0;
+    padding: 0;
+    line-height: 70px;
+    font-size: 46px;
+    width: 177px;
+  }
+  .app-bar-actions {
+    float: right;
+  }
+  .app-bar:after {
+    content: ' ';
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  button.menu {
+    display: none;
+  }
+  h1.logo {
+    position: static;
+    top: auto;
+    left: auto;
+  }
+  .navdrawer-container {
+    width: 100%;
+    height: auto;
+    margin-top: 130px;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    transition: none;
+    overflow-y: auto;
+  }
+  a.search-icon {
+    display: block !important;
+  }
+  .navdrawer-container #search-wrapper {
+    display: none;
+  }
+  .navdrawer-container ul {
+    display: -webkit-flex;
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+  .navdrawer-container ul li {
+    border: none;
+  }
+  body {
+    /* overflow-y: scroll; */
+  }
+  .navdrawer-container {
+    margin-top: 0;
+    background: transparent;
+    height: 1px;
+    z-index: 1000;
+    overflow: visible;
+  }
+  .navdrawer-container #nav > ul {
+    padding-left: 239px;
+  }
+  .navdrawer-container #nav > ul li.has-drop-down > a {
+    background: transparent;
+    color: #7e7e7e;
+    border-bottom-width: 0;
+  }
+  .navdrawer-container #nav > ul > li.has-drop-down > a:after {
+    content: none;
+  }
+  .navdrawer-container #nav > ul > li {
+    border-bottom-width: 0;
+    border-top-width: 0 !important;
+    width: auto;
+    height: 82px;
+    float: left;
+  }
+  .navdrawer-container #nav > ul > li:hover,
+  .navdrawer-container #nav > ul > li.has-drop-down-open,
+  .navdrawer-container #nav > ul > li.active {
+    background-color: #f0f0f0;
+  }
+  .navdrawer-container #nav > ul > li > a {
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: white;
+    text-align: center;
+    line-height: 78px;
+    height: 78px;
+  }
+  .navdrawer-container #nav > ul > li:hover > a,
+  .navdrawer-container #nav > ul > li.has-drop-down-open > a,
+  .navdrawer-container #nav > ul > li.active > a {
+    border-top-color: #0064d2;
+  }
+  .navdrawer-container #nav > ul li.has-drop-down .drop {
+    position: absolute;
+    top: 82px;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .navdrawer-container #nav > ul li.has-drop-down ul li > a,
+  .navdrawer-container #nav > ul li.has-drop-down ul li > a:link,
+  .navdrawer-container #nav > ul li.has-drop-down ul li > a:visited {
+    height: auto;
+    line-height: 1;
+    font-size: 14px;
+    padding: 9px 14px 8px;
+  }
+  .navdrawer-container #nav > ul li.has-drop-down ul li > a:hover,
+  .navdrawer-container #nav > ul li.has-drop-down ul li > a:link:hover,
+  .navdrawer-container #nav > ul li.has-drop-down ul li > a:visited:hover {
+    color: white;
+  }
+}
+@media all and (min-device-width: 1200px) and (max-width: 800px) {
+  .app-bar .logo {
+    float: none;
+    width: 100%;
+    line-height: normal;
+    text-align: center;
+    padding-top: 36px;
+  }
+  .app-bar-container {
+    height: auto;
+  }
+  .app-bar-actions {
+    width: 100%;
+  }
+  .navdrawer-container {
+    padding: 0 16px;
+    overflow-y: auto;
+  }
+  .navdrawer-container li {
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+  }
+}
+.navdrawer-container ul li.has-drop-down ul {
+  overflow: hidden;
+  display: none;
+  height: 0px;
+  background-color: #f0f0f0;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+.navdrawer-container ul li.has-drop-down.hover ul {
+  display: block;
+  height: auto;
+}

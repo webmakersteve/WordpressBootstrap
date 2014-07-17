@@ -5,6 +5,9 @@ Description: Theme to install bootstrap initializr on. Bare bones
 Version: 1.0
 
 */
+/*
+ * This is mobile first so media queries are done custom
+ */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -6292,7 +6295,6 @@ header#header #header-wrapper {
 .app-bar .container {
   display: -webkit-flex;
   display: flex;
-  width: 100%;
   height: 60px;
   position: relative;
   -webkit-flex-direction: row;
@@ -6307,11 +6309,11 @@ header#header #header-wrapper {
 .app-bar .navbar-brand {
   -webkit-flex: 1;
   flex: 1;
-  font-size: 2em;
+  font-size: 1.6em;
   line-height: 60px;
   margin: 0 0 0 0;
   padding: 0 !important;
-  color: #fefefe;
+  color: #563d7c;
   float: none;
   text-align: center;
   max-width: none;
@@ -6359,7 +6361,15 @@ header#header #header-wrapper {
 .app-bar h1.navbar-brand {
   position: absolute;
   top: 0;
-  left: 70px;
+  left: 60px;
+}
+.app-bar .container,
+.navdrawer-container .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+main {
+  padding-top: 60px;
 }
 .promote-layer {
   /*
@@ -6378,7 +6388,7 @@ nav {
 }
 .navdrawer-container {
   font-size: 15px;
-  background: #f7f7f7;
+  background: #f0f0f0;
   color: #7e7e7e;
   box-shadow: inset 0 0 5px 5px #ebebeb;
   -webkit-box-shadow: inset 0 0 5px 5px #ebebeb;
@@ -6401,12 +6411,16 @@ nav {
   transform: translate(0, 0);
 }
 .navdrawer-container h4,
-.navdrawer-container .nav > ul > li > a {
-  height: 78px;
+.navdrawer-container .navnav-nav ul > li > a {
+  height: 60px;
   padding: 0 39px !important;
   line-height: 78px;
 }
-.navdrawer-container .nav ul li {
+.navdrawer-container .navbar-nav {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.navdrawer-container .navbar-nav li {
   border-bottom-style: solid;
   border-width: 1px;
   float: none;
@@ -6415,20 +6429,20 @@ nav {
   line-height: 1;
   /* end list element with dropdown */
 }
-.navdrawer-container .nav ul li.dropdown {
-  border-color: #272727;
+.navdrawer-container .navbar-nav li a {
+  color: #563d7c;
+}
+.navdrawer-container .navbar-nav li.dropdown {
   /* end dropped down submenu */
 }
-.navdrawer-container .nav ul li.dropdown a {
+.navdrawer-container .navbar-nav li.dropdown a {
   color: white;
-  background-color: #313131;
   position: relative;
 }
-.navdrawer-container .nav ul li.dropdown a:after {
+.navdrawer-container .navbar-nav li.dropdown a:after {
   width: 17px;
   height: 17px;
   content: " ";
-  background: url(http://54.197.130.50/sites/all/themes/ebayinc/images/dd-arrows.png) 0 -17px;
   background-size: auto 34px;
   display: block;
   position: absolute;
@@ -6437,33 +6451,33 @@ nav {
   top: 50%;
   right: 20px;
 }
-.navdrawer-container .nav ul li.dropdown.hover > a:after,
-.navdrawer-container .nav ul li.dropdown.dropdown-open > a:after,
-.navdrawer-container .nav ul li.dropdown .has-drop-down-open > a:after {
+.navdrawer-container .navbar-nav li.dropdown.hover > a:after,
+.navdrawer-container .navbar-nav li.dropdown.dropdown-open > a:after,
+.navdrawer-container .navbar-nav li.dropdown .has-drop-down-open > a:after {
   background-position: 0 0;
 }
-.navdrawer-container .nav ul li.dropdown a {
+.navdrawer-container .navbar-nav li.dropdown a {
   display: block;
   text-decoration: none;
-  color: white;
+  color: #563d7c;
   transition: background-color 0.2s ease-out;
 }
-.navdrawer-container .nav ul li.dropdown a:focus {
+.navdrawer-container .navbar-nav li.dropdown a:focus {
   outline: 0;
 }
-.navdrawer-container .nav ul li.dropdown ul {
+.navdrawer-container .navbar-nav li.dropdown ul {
   /* end dropped down list element */
 }
-.navdrawer-container .nav ul li.dropdown ul li {
+.navdrawer-container .navbar-nav li.dropdown ul li {
   border-bottom-width: 0px;
 }
-.navdrawer-container .nav ul li.dropdown ul li > a {
+.navdrawer-container .navbar-nav li.dropdown ul li > a {
   height: 40px;
   line-height: 40px;
   color: #0063d0;
   font-size: 15px;
 }
-.navdrawer-container .nav ul li.dropdown ul li:before {
+.navdrawer-container .navbar-nav li.dropdown ul li:before {
   content: none;
 }
 /* end nav container */
@@ -6473,156 +6487,7 @@ main {
   transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
 }
-/** Larger Screens - desktops and tablets **/
-@media all and (min-device-width: 1200px) {
-  .navdrawer-container,
-  .app-bar {
-    position: absolute;
-  }
-  main {
-    padding: 0;
-  }
-  #header .logo {
-    line-height: 82px;
-  }
-  .app-bar {
-    position: relative;
-  }
-  .drop {
-    padding: 0 !important;
-  }
-  .nav-container {
-    width: 1080px;
-    margin: 0 auto;
-  }
-  .app-bar-container {
-    display: block;
-    height: 82px;
-    max-width: 1080px;
-    padding: 0 16px;
-    box-sizing: border-box;
-    background-color: white;
-  }
-  .app-bar .logo {
-    float: left;
-    margin: 0;
-    padding: 0;
-    line-height: 70px;
-    font-size: 46px;
-    width: 177px;
-  }
-  .app-bar-actions {
-    float: right;
-  }
-  .app-bar:after {
-    content: ' ';
-    display: block;
-    height: 0;
-    overflow: hidden;
-    clear: both;
-  }
-  button.menu {
-    display: none;
-  }
-  h1.logo {
-    position: static;
-    top: auto;
-    left: auto;
-  }
-  .navdrawer-container {
-    width: 100%;
-    height: auto;
-    margin-top: 130px;
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-    transition: none;
-    overflow-y: auto;
-  }
-  a.search-icon {
-    display: block !important;
-  }
-  .navdrawer-container #search-wrapper {
-    display: none;
-  }
-  .navdrawer-container ul {
-    display: -webkit-flex;
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-  }
-  .navdrawer-container ul li {
-    border: none;
-  }
-  body {
-    /* overflow-y: scroll; */
-  }
-  .navdrawer-container {
-    margin-top: 0;
-    background: transparent;
-    height: 1px;
-    z-index: 1000;
-    overflow: visible;
-  }
-  .navdrawer-container #nav > ul {
-    padding-left: 239px;
-  }
-  .navdrawer-container #nav > ul li.has-drop-down > a {
-    background: transparent;
-    color: #7e7e7e;
-    border-bottom-width: 0;
-  }
-  .navdrawer-container #nav > ul > li.has-drop-down > a:after {
-    content: none;
-  }
-  .navdrawer-container #nav > ul > li {
-    border-bottom-width: 0;
-    border-top-width: 0 !important;
-    width: auto;
-    height: 82px;
-    float: left;
-  }
-  .navdrawer-container #nav > ul > li:hover,
-  .navdrawer-container #nav > ul > li.has-drop-down-open,
-  .navdrawer-container #nav > ul > li.active {
-    background-color: #f0f0f0;
-  }
-  .navdrawer-container #nav > ul > li > a {
-    border-top-width: 4px;
-    border-top-style: solid;
-    border-top-color: white;
-    text-align: center;
-    line-height: 78px;
-    height: 78px;
-  }
-  .navdrawer-container #nav > ul > li:hover > a,
-  .navdrawer-container #nav > ul > li.has-drop-down-open > a,
-  .navdrawer-container #nav > ul > li.active > a {
-    border-top-color: #0064d2;
-  }
-  .navdrawer-container #nav > ul li.has-drop-down .drop {
-    position: absolute;
-    top: 82px;
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
-  .navdrawer-container #nav > ul li.has-drop-down ul li > a,
-  .navdrawer-container #nav > ul li.has-drop-down ul li > a:link,
-  .navdrawer-container #nav > ul li.has-drop-down ul li > a:visited {
-    height: auto;
-    line-height: 1;
-    font-size: 14px;
-    padding: 9px 14px 8px;
-  }
-  .navdrawer-container #nav > ul li.has-drop-down ul li > a:hover,
-  .navdrawer-container #nav > ul li.has-drop-down ul li > a:link:hover,
-  .navdrawer-container #nav > ul li.has-drop-down ul li > a:visited:hover {
-    color: white;
-  }
-}
-@media all and (min-device-width: 1200px) and (max-width: 800px) {
+@media all and (min-device-width: 992px) and (max-width: 767px) {
   .app-bar .logo {
     float: none;
     width: 100%;
@@ -6658,9 +6523,150 @@ main {
   display: block;
   height: auto;
 }
+@media (min-width: 992px) {
+  .navdrawer-container,
+  .app-bar {
+    position: absolute;
+  }
+  main {
+    padding-top: 0px;
+  }
+  .app-bar {
+    position: relative;
+    height: 50px;
+  }
+  .app-bar .navbar-brand {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    width: 177px;
+    position: static;
+    top: auto;
+    left: auto;
+  }
+  .app-bar .actionbs {
+    float: right;
+  }
+  .app-bar:after {
+    content: ' ';
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  .app-bar button.navbar-toggle {
+    display: none;
+  }
+  .navdrawer-container {
+    width: 100%;
+    height: auto;
+    margin-top: 130px;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    transition: none;
+    overflow-y: auto;
+    margin-top: 0;
+    background: transparent;
+    height: 1px;
+    z-index: 1000;
+    overflow: visible;
+  }
+  .navdrawer-container .navbar-nav {
+    display: -webkit-flex;
+    display: flex;
+    margin: 0 auto;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    padding-left: 239px;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .navdrawer-container .navbar-nav li {
+    border: none;
+  }
+  .navdrawer-container .navbar-nav > li {
+    border-bottom-width: 0;
+    border-top-width: 0 !important;
+    width: auto;
+    height: 50px;
+    /* nav dropdown */
+  }
+  .navdrawer-container .navbar-nav > li:hover,
+  .navdrawer-container .navbar-nav > li.active {
+    background-color: #f0f0f0;
+  }
+  .navdrawer-container .navbar-nav > li:hover > a,
+  .navdrawer-container .navbar-nav > li.active > a {
+    border-top-color: #0064d2;
+  }
+  .navdrawer-container .navbar-nav > li a,
+  .navdrawer-container .navbar-nav > li a:link,
+  .navdrawer-container .navbar-nav > li a:visited {
+    color: #563d7c;
+  }
+  .navdrawer-container .navbar-nav > li > a {
+    border-top-width: 0px;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .navdrawer-container .navbar-nav > li.dropdown a {
+    background: transparent;
+    border-bottom-width: 0;
+  }
+  .navdrawer-container .navbar-nav > li.dropdown a:after {
+    content: none;
+  }
+  .navdrawer-container .nav > li.dropdown ul {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .navdrawer-container .nav > li.dropdown ul li > a,
+  .navdrawer-container .nav > li.dropdown ul li > a:link,
+  .navdrawer-container .nav > li.dropdown ul li > a:visited {
+    height: auto;
+    line-height: 1;
+    font-size: 14px;
+    padding: 9px 14px 8px;
+  }
+  .navdrawer-container .nav > li.dropdown ul li > a:hover,
+  .navdrawer-container .nav > li.dropdown ul li > a:link:hover,
+  .navdrawer-container .nav > li.dropdown ul li > a:visited:hover {
+    color: white;
+  }
+}
+.jumbotron {
+  background-color: #563d7c;
+  color: #ffffff;
+}
+.btn.btn-inverse {
+  color: #ffffff;
+  background-color: #563d7c;
+  border-color: #ffffff;
+}
+.btn.btn-inverse:hover {
+  color: #563d7c;
+  background-color: #ffffff;
+}
+.btn.btn-default {
+  color: #563d7c;
+  background-color: #ffffff;
+  border-color: #563d7c;
+}
+.btn.btn-default:hover {
+  color: #ffffff;
+  background-color: #563d7c;
+}
 .icon-bar {
-  border: 1px solid white;
+  border: 1px solid #563d7c;
 }
 header.app-bar {
-  background-color: red;
+  background-color: #ffffff;
 }
