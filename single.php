@@ -3,7 +3,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1><?php the_title() ?></h1>
-            <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
+            <small><span class="glyphicon glyphicon-time"></span> <?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
             <!--p><a class="btn btn-inverse btn-lg" role="button">Learn more &raquo;</a></p-->
         </div>
     </div>

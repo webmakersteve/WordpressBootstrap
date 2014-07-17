@@ -6645,6 +6645,10 @@ body.admin-bar .navdrawer-container {
   background-color: #563d7c;
   color: #ffffff;
 }
+.jumbotron small,
+.jumbotron a {
+  color: #9783b9;
+}
 .btn.btn-inverse {
   color: #ffffff;
   background-color: #563d7c;
@@ -6668,4 +6672,7 @@ body.admin-bar .navdrawer-container {
 }
 header.app-bar {
   background-color: #ffffff;
+}
+#respond #submit {
+  display: none;
 }
