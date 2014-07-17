@@ -14,7 +14,7 @@
         <script type="text/javascript" data-main="<?php echo get_template_directory_uri()?>/public/js/main.js"
                 src="<?php echo get_template_directory_uri(); ?>/public/js/require.js"></script>
     </head>
-    <body>
+    <body <?php body_class(); ?>>
 
 
     <div id="header-wrapper">
@@ -39,12 +39,13 @@
             <div class="container">
                 <?php
                 $defaults = array(
-                    'theme_location'  => '',
+                    'theme_location'  => 'primary',
                     'menu'            => '',
-                    'container'       => '',
+                    'container'       => false,
                     'menu_class'      => 'nav navbar-nav navbar-right',
                     'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                    'walker'          => new Bootstrap_Menu_Walker()
+                    'walker'          => new Bootstrap_Menu_Walker(),
+                    'echo'            => true
                 );
 
                 wp_nav_menu( $defaults );
