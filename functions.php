@@ -4,6 +4,7 @@ define('T', dirname(get_stylesheet_uri()) . '/' );
 define('THEME_VERSION', 1);
 
 require('src/menu/walker.php');
+require('src/comments/walker.php');
 
 add_theme_support( 'menus' );
 add_theme_support( 'html5' );

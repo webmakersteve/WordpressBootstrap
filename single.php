@@ -13,11 +13,12 @@
         <div class="row">
 
                 <div class="col-md-6 col-md-offset-3">
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
-                    <?php the_content(); ?>
-
+                    <?php get_template_part( 'content', get_post_format() ); ?>
                 </div>
 
+                <div class="col-md-6 col-md-offset-3">
+                    <?php comments_template(); ?>
+                </div>
 
         </div>
 
