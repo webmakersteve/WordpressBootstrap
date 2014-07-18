@@ -13,9 +13,7 @@
     <div class="row">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <div class="col-md-6 col-md-offset-3">
-            <h3><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
-            <?php the_content(); ?>
-            <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
+            <?php get_template_part( 'content', get_post_format() ); ?>
         </div>
         <?php endwhile; else: ?>
         <div class="col-md-6 col-md-offset-3">
