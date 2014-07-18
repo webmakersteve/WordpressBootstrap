@@ -12,6 +12,8 @@ add_theme_support( 'post-formats' );
 add_theme_support( 'post-thumbnails' );
 //add_theme_support( 'admin-bar', array( 'callback' => 'ads') );
 
+add_theme_support( 'post-formats', array( 'gallery', 'link', 'image', 'video' ) );
+
 
 register_nav_menus( array(
 	'primary'	=> "Top Menu"
