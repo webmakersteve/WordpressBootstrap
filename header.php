@@ -37,19 +37,7 @@
 
         <nav class="navdrawer-container promote-layer">
             <div class="container">
-                <?php
-                $defaults = array(
-                    'theme_location'  => 'primary',
-                    'menu'            => '',
-                    'container'       => false,
-                    'menu_class'      => 'nav navbar-nav navbar-right',
-                    'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                    'walker'          => new Bootstrap_Menu_Walker(),
-                    'echo'            => true
-                );
-
-                wp_nav_menu( $defaults );
-                ?>
+                <?php bootstrap_nav_menu(); ?>
             </div>
         </nav>
 

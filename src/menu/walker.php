@@ -167,6 +167,7 @@ class Bootstrap_Menu_Walker extends Walker_Nav_Menu {
 	 *
 	 */
 	public static function fallback( $args ) {
+		
 		if ( current_user_can( 'manage_options' ) ) {
 
 			extract( $args );
