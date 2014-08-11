@@ -6648,8 +6648,12 @@ body.admin-bar .navdrawer-container {
   background-color: #563d7c;
   color: #ffffff;
 }
+.jumbotron p {
+  font-size: 24px;
+}
 .jumbotron small,
-.jumbotron a {
+.jumbotron a,
+.jumbotron p {
   color: #9783b9;
 }
 .btn.btn-inverse {
