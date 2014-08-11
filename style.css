@@ -6420,6 +6420,9 @@ nav {
   margin-left: 0px;
   margin-right: 0px;
 }
+.navdrawer-container .container {
+  height: 1px;
+}
 .navdrawer-container .navbar-nav li {
   border-bottom-style: solid;
   border-width: 1px;
