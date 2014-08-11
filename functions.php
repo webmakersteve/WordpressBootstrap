@@ -51,17 +51,25 @@ if (is_admin_bar_showing()) add_action( 'wp_head', function( ) {
 	</style><?php 
 });
 
-function bootstrap_nav_menu() {
+function bootstrap_nav_menu( $overrides = null ) {
 	
-    $defaults = array(
+    $args = array(
         'theme_location'  => 'primary',
         'menu'            => '',
         'container'       => false,
         'menu_class'      => 'nav navbar-nav navbar-right',
-        'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+        'menu_id'		  => "main-menu",
         'walker'          => new Bootstrap_Menu_Walker(),
         'echo'            => true
     );
+
+    if ($overrides !== null) {
+    	foreach( $overrides as $k=>$v ) {
+    		$args[$k] = $v;
+    	}
+    }
+
+    $defaults = array_merge($args, array('fallback_cb' => Bootstrap_Menu_Walker::fallback($args)));
 
     wp_nav_menu( $defaults );
 }
